@@ -31,7 +31,7 @@ while True:
         print(tittle)
         break
     else:
-        time.sleep(2)
+        time.sleep(3)
         print(tittle,text)
         
     
