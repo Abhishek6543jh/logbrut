@@ -13,6 +13,8 @@ def logbrute(user,passw):
         time.sleep(0.1)
         statusmessage =driver.title
         return statusmessage
+
+#to generate random vtu numbers
 def randuser():
     lis = []
     randnum =random.randrange(19000,22000)
