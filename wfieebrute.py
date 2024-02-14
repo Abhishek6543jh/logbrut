@@ -1,12 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager 
 import random
 import time
+
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach",True)
-driver = webdriver.Chrome(options=options,executable_path="D:\python\webdrivers\chromedriver.exe")
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 def logbrute(user,passw):
-        driver.get("http://10.10.1.5:8090/httpclient.html")
+        driver.get("http://172.17.1.10:8090/httpclient.html")
         driver.find_element(By.ID,"username").send_keys(user)
         driver.find_element(By.ID,"password").send_keys(passw)
         driver.find_element(By.ID,"loginbutton").click()
